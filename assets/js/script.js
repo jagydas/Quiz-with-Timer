@@ -24,7 +24,7 @@ var questionAnsCount = 0;
 var finalScoreEl = document.querySelector("#finalScore");
 
 // correct ans check
-  var finalcheckEl = document.querySelector("#finalcheckEl");
+  var finalcheckEl = document.querySelector("#finalcheck");
 //user initials
 
 var initialsEl =document.querySelector("#initials");
@@ -48,10 +48,10 @@ var quizBtnEl = document.querySelector("#start");
 //answer button class
 
 var ansBtnEl =document.querySelectorAll("button.ansBtn");
-var ansBtn1El = document.querySelector("answer1");
-var ansBtn2El = document.querySelector("answer2");
-var ansBtn3El = document.querySelector("answer3");
-var ansBtn4El = document.querySelector("answer4");
+var ansBtn1El = document.querySelector("#answer1");
+var ansBtn2El = document.querySelector("#answer2");
+var ansBtn3El = document.querySelector("#answer3");
+var ansBtn4El = document.querySelector("#answer4");
 
 // submit-score
 var submitScrBtn = document.querySelector("#submit-score");
@@ -69,32 +69,27 @@ var viewscoreEl = document.querySelector("#view-score");
 var questions = [{
 
     question:"Inside which HTML element do we put the JavaScript?",
-    answers: ["1> <javascript>","2> <scripting>","3> <js>","4> <script>"],
-    correctAnswer: "4"
+    answers: ["1. <javascript>","2. <scripting>","3. <js>","4. <script>"],
+    correctAnswer: "4. <script>"
 },
 {
  question:"Where is the correct place to insert a JavaScript?",
- answers:[" Both the <head> section and the <body> section are correct"," The <head> section", "The <body> section"],
- correctAnswer:" Both the <head> section and the <body> section are correct"
+ answers:[" 1. Both the <head> section and the <body> section are correct","2. The <head> section", "3.The <body> section","4. footer section"],
+ correctAnswer:" 1. Both the <head> section and the <body> section are correct"
 
 },
 
 {
  question: "How can you add a comment in a JavaScript?",
- answers: ["This is a comment","//This is a comment","<!-- This is a comment -->"],
- correctAnswer: "<!-- This is a comment -->"
+ answers: ["1. This is a comment","2. This is a comment //","3. <!-- This is a comment -->", "4. This is a comment /*"],
+ correctAnswer: "3. <!-- This is a comment -->"
 
-},
-{
- question: "JavaScript is the same as Java.",
- answers: ["False","True"],
- correctAnswer : "True"
 },
 
 {
     question: "Which event occurs when the user clicks on an HTML element?",
-    answers:["onclick","onmouseover", "onchange","onmouseclick"],
-    correctAnswer:"onclick"
+    answers:["1. onclick","2. onmouseover", "3. onchange","4. onmouseclick"],
+    correctAnswer: "4. onmouseclick"
 }
 ];
 
@@ -130,9 +125,9 @@ function quizStart(){
     function setQuestion(id){
        if(id < questions.length){
         questionsEl.textContent = questions[id].question;
-        ansBtn1El.textContent = questions[id].answer[0];
-        ansBtn2El.textContent = questions[id].answer[1];
-        ansBtn3El.textContent = questions[id].answer[2];
+        ansBtn1El.textContent = questions[id].answers[0];
+        ansBtn2El.textContent = questions[id].answers[1];
+        ansBtn3El.textContent = questions[id].answers[2];
         ansBtn4El.textContent = questions[id].answers[3];
 
        }
@@ -156,13 +151,13 @@ finalcheckEl.style.display = "block";
     p.style.display ="none";
 
  },1000);
-
+ console.log (event.target.value);
 // answer check
  if(questions[questionAnsCount].correctAnswer == event.target.value){
 
     p.textContent ="Correct!";
  }
- else if (questions[questionAnsCount].correctAnswer != event.taget.value){
+ else if (questions[questionAnsCount].correctAnswer != event.target.value){
     timeLeft = timeLeft -10;
     p.textContent = "Wrong!";
  }
@@ -179,18 +174,23 @@ finalcheckEl.style.display = "block";
      event.preventDefault();
      finalScoreEl.style.display = "none";
     highestScoreEl.style.display = "block";
+    var init = initialsEl.value.toUpperCase();
+    var array = JSON.parse(localStorage.getItem("scoreArr")) || [];
+    array.push({initials: init, score: timeLeft});
 
- var init = initialsEl.value.toUpperCase();
- scoreArr.push({initials:init,score : highestScoreEl});
+localStorage.setItem("scoreArr", JSON.stringify(array));
+
  }
  //sorted score
- scoreArr = scoreArr.sort((a,b) =>{
-     if(a.score < b.score){
-         return 1;
-     }else {
-         return -1 ;
-     }
- });
+//  scoreArr = scoreArr.sort((a,b) =>{
+//      if(a.score < b.score){
+//          return 1;
+//      }else {
+//          return -1 ;
+//      }
+//  }
+ 
+ //);
 
  scoreListEl.innerHTML = "";
  for(var i =0; i < scoreArr.length; i++){
@@ -201,24 +201,26 @@ finalcheckEl.style.display = "block";
  }
 
  // local storage
- storeScores();
- displayScores();
-
- function storeScores(){
-     localStorage.setItem("scoreArr",JSON.stringify(scoreArr));
- }
+//  storeScores();
 
 
- function displayScores() {
-    // Get stored scores from localStorage
-    // Parsing the JSON string to an object
-    var storedScoreList = JSON.parse(localStorage.getItem("scoreList"));
-    // update the scoreArr with retrieved scoreArr from local storage
-     if(storedScoreList != null){
-         scoreArr =storedScoreList;
-     }
+//  function storeScores(){
+//      localStorage.setItem("scoreArr",JSON.stringify(scoreArr));
+//  }
 
- }
+ showHighScore();
+
+  
+//  function displayScores() {
+//     // Get stored scores from localStorage
+//     // Parsing the JSON string to an object
+//     var storedScoreList = JSON.parse(localStorage.getItem("scoreList"));
+//     // update the scoreArr with retrieved scoreArr from local storage
+//      if(storedScoreList != null){
+//          scoreArr =storedScoreList;
+//      }
+
+ //}
 
  // clear scores
 function clearScores() {
@@ -242,7 +244,7 @@ goBackBtn.addEventListener("click",function(){
     highestScoreEl.style.display = "none";
     introEl.style.display = "block";
     timeLeft =60;
-    timeEl.textContent = `Time:$(timeLeft)s`
+    timeEl.textContent = `Time:$(timeLeft)s`;
 
 });
 
@@ -250,12 +252,28 @@ goBackBtn.addEventListener("click",function(){
 clearScrBtn.addEventListener("click",clearScores);
 
 // highscore button
-viewscoreEl.addEventListener("click",function(){
-    if (highscoresEl.style.display === "none") {
-        highscoresEl.style.display = "block";
-    } else if (highscoresEl.style.display === "block") {
-        highscoresEl.style.display = "none";
-    } else {
-        return alert("No scores to show.");
+// viewscoreEl.addEventListener("click",function(){
+//     if (highscoresEl.style.display === "none") {
+//         highscoresEl.style.display = "block";
+//     } else if (highscoresEl.style.display === "block") {
+//         highscoresEl.style.display = "none";
+//     } else {
+//         return alert("No scores to show.");
+//     }
+// });
+
+// showing the highscore
+
+  function showHighScore(){
+   
+    var highScoreArray = JSON.parse(localStorage.getItem("scoreArr")) || [];
+    console.log (highScoreArray);
+    for(var i = 0; i < highScoreArray.length; i++){
+        let li = document.createElement("li");
+        li.textContent = `${highScoreArray[i].initials}: ${highScoreArray[i].score}`;
+        scoreListEl.append(li);
+        
     }
-});
+
+  }
+  

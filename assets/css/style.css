@@ -26,14 +26,21 @@ main{
 #finalScore,
 #highestScore{
     display: none;
+    
 }
 
 ul.nobullets {
     list-style-type: none;
+    padding-top: 20%;
     }
-
+    .btn-success {
+        color: #fff;
+        background-color: #28a745;
+        border-color: #28a745;
+    
+    }
     /* Answer button styling */
-.ansBtn,
+ .ansBtn,
 .ansBtn:hover,
 .ansBtn:active,
 .ansBtn:focus,
@@ -41,7 +48,13 @@ ul.nobullets {
     box-shadow: none;
     outline: none;
     background-color: #28a745;
-}
+    color: #fff;
+
+    
+} 
+
+
+    
 
 /* Mobile */
 @media (max-width: 480px) {
