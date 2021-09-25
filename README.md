@@ -1,12 +1,14 @@
 # Quiz-with-Timer
 
 **User Story**
+
 AS A coding boot camp student
 I WANT to take a timed quiz on JavaScript fundamentals that stores high scores
 SO THAT I can gauge my progress compared to my peers
 Deployed url : https://jagydas.github.io/Quiz-with-Timer/
 
 **Acceptance Criteria**
+
 GIVEN I am taking a code quiz
 WHEN I click the start button
 THEN a timer starts and I am presented with a question
