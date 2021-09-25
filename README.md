@@ -7,7 +7,9 @@ This quiz repo  features multiple-choice questions about javascript. If answered
 **Techology used**
 
 HTML
+
 CSS
+
 javaScript
 
 
