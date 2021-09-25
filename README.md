@@ -10,13 +10,15 @@ HTML
 CSS
 javaScript
 
+
+**Deployed url:**  https://jagydas.github.io/Quiz-with-Timer/
+
+
 **User Story**
 
 AS A coding boot camp student
 I WANT to take a timed quiz on JavaScript fundamentals that stores high scores
 SO THAT I can gauge my progress compared to my peers
-
-Deployed url : https://jagydas.github.io/Quiz-with-Timer/
 
 **Acceptance Criteria**
 
@@ -32,9 +34,8 @@ THEN the game is over
 WHEN the game is over
 THEN I can save my initials and score
 
-Deployed url : https://jagydas.github.io/Quiz-with-Timer/
 
 
-Contribution: jagydas
+**Contribution:** jagydas
 
 
