@@ -1,46 +1,51 @@
-*{
-
+* {
     font-family: Arial, Helvetica, sans-serif;
 }
 
-html ,body{
+html,
+body {
     height: 100%;
 }
 
-body{
-background-attachment: fixed;    
-background-position: center center;
-background-repeat: no-repeat;
-background-size: cover;
-/* make the page display properly in all screen type using flexbox */
- display: flex;
- flex-direction: column;
+body {
+    background-attachment: fixed;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    /* make the page display properly in all screen type using flexbox */
+    display: flex;
+    flex-direction: column;
 }
 
-main{
-    flex : 1 ;
+main {
+    flex: 1;
 }
+
+
 /* hide sections until clicked */
- #quizQs,
+
+#quizQs,
 #questions,
 #finalScore,
-#highestScore{
+#highestScore {
     display: none;
-    
 }
 
 ul.nobullets {
     list-style-type: none;
     padding-top: 10px;
-    }
-    .btn-success {
-        color: #fff;
-        background-color: #28a745;
-        border-color: #28a745;
-    
-    }
-    /* Answer button styling */
- .ansBtn,
+}
+
+.btn-success {
+    color: #fff;
+    background-color: #28a745;
+    border-color: #28a745;
+}
+
+
+/* Answer button styling */
+
+.ansBtn,
 .ansBtn:hover,
 .ansBtn:active,
 .ansBtn:focus,
@@ -49,33 +54,34 @@ ul.nobullets {
     outline: none;
     background-color: #28a745;
     color: #fff;
+}
 
-    
-} 
-
-
-    
 
 /* Mobile */
+
 @media (max-width: 480px) {
     body {
         background-color: lightblue;
-	    background-image: url(./assets/images/question.jpg);
+        background-image: url(../images/question.jpeg);
     }
 }
 
+
 /* Tablet */
+
 @media (min-width: 481px) and (max-width: 1024px) {
     body {
         background-color: lightblue;
-	    background-image: url(./assets/images/question.jpg);
+        background-image: url(../images/question.jpeg);
     }
 }
 
+
 /* Desktop */
+
 @media (min-width: 1025px) {
     body {
         background-color: lightblue;
-	    background-image: url(./assets/images/question.jpg);
-   }
+        background-image: url(../images/question.jpeg);
+    }
 }
