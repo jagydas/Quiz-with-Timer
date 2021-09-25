@@ -13,7 +13,7 @@ CSS
 javaScript
 
 
-**Deployed url:**  https://jagydas.github.io/Quiz-with-Timer/
+**Deployed url**  https://jagydas.github.io/Quiz-with-Timer/
 
 
 **User Story**
