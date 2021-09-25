@@ -5,6 +5,7 @@
 This quiz repo  features multiple-choice questions about javascript. If answered incorrectly, time is deducted.
 
 **Techology used**
+
 HTML
 CSS
 javaScript
